@@ -1,0 +1,10 @@
+#!/bin/sh
+day="$1"
+part="$2"
+
+day="$(printf '%02d' "${day##0}")"
+
+if test -f "day${day}/part${part}.c"; then
+	/usr/bin/env cc -v 2>/dev/null || echo "no cc :-("
+	cc "day${day}/part${part}.c" lib/* -o run
+fi
