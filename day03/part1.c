@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "../lib/general_functions.h"
 
 int priority(char c) {
 	if ('A' <= c && c <= 'Z') {
@@ -20,15 +21,14 @@ int main(int argc, char ** argv) {
 	char item;
 	int first_occurrence[52];
 	int last_occurrence[52];
-	int i = 0, j = 0;
+	int i = 0, j;
 	int priority_sum = 0;
 	initialize_occurrences(first_occurrence);
 	initialize_occurrences(last_occurrence);
-	while ((item = fgetc(file)) != EOF) {
+	while ((item = next_character(file)) != EOF) {
 		if (item == '\n') {
 			for (j = 0; j < 52; j++) {
 				if (first_occurrence[j] < i / 2 && last_occurrence[j] >= i / 2) {
-					fprintf(stderr, "Shared: %d %d \n", j + 1, i);
 					priority_sum += j + 1;
 				}
 			}
