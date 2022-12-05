@@ -43,3 +43,41 @@ void free_list(ArrayList *this) {
 	free(this->items);
 	free(this);
 }
+
+CharList * charlist() {
+    ArrayList *this = malloc(sizeof(ArrayList));
+    this->capacity = 4;
+    this->size = 0;
+    this->items = malloc(this->capacity * sizeof(char));
+    return this;
+}
+
+char get_charlist(CharList *this, int index) {
+    if (index < 0 || this->size < index) {
+        fprintf(stderr, "reading outside the bounds of an arraylist, index=%d, size=%d\n", index, this->size);
+        exit(1);
+    }
+    return this->items[index];
+}
+
+//overwrites the element at index 'index' to item
+void set_charlist(CharList *this, int index, char item) {
+    if(index >= this->size){
+        fprintf(stderr, "The list is too short to set an element at index %d\n", index);
+        exit(1);
+    }
+    this->items[index] = item;
+}
+
+void add_charlist(CharList *this, char item) {
+    if (this->size == this->capacity) {
+        this->capacity *= 2;
+        this->items = realloc(this->items, this->capacity * sizeof(char));
+    }
+    this->items[this->size++] = item;
+}
+
+void free_charlist(CharList *this) {
+    free(this->items);
+    free(this);
+}
