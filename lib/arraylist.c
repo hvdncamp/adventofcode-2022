@@ -77,6 +77,15 @@ void add_charlist(CharList *this, char item) {
     this->items[this->size++] = item;
 }
 
+char pop_charlist(CharList *this){
+    if(this->size == 0){
+        fprintf(stderr, "cannot pop an element from an empty list.");
+        exit(1);
+    }
+    return this->items[--this->size];
+}
+
+
 void free_charlist(CharList *this) {
     free(this->items);
     free(this);

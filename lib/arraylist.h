@@ -23,5 +23,6 @@ CharList * charlist();
 char get_charlist(CharList *this, int index);
 void set_charlist(CharList *this, int index, char item);
 void add_charlist(CharList *this, char item);
+char pop_charlist(CharList *this);
 void free_charlist(CharList *this);
 #endif

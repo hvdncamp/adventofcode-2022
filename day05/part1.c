@@ -11,9 +11,15 @@ void reverse_order(CharList* stack, int height){
     }
 }
 
-void move(CharList** stacks, int number, int from, int to){
-    //TODO
+void move_crates(CharList** stacks, int* heights, int number, int from, int to){
+    for (int i = 0; i < number; ++i) {
+        add_charlist(stacks[to], pop_charlist(stacks[from]));
+    }
+    heights[from] -= number;
+    heights[to] += number;
 }
+
+
 
 int main(int argc, char ** argv) {
     FILE * file = fopen(argv[3], "r");
@@ -31,14 +37,11 @@ int main(int argc, char ** argv) {
             case '[':
                 add_charlist(stacks[column], next_character(file));
                 height[column]++;
-                next_character(file); // ']'
-                next_character(file); // ' ' or '\n'
+                skip_next_n_characters(file, 2); //skip ']' and (' ' or '\n')
                 column = (column + 1) % 9;
                 break;
             case ' ':
-                next_character(file); // ' '
-                next_character(file); // ' '
-                next_character(file); // ' '
+                skip_next_n_characters(file, 3);
                 column = (column + 1) % 9;
                 break;
             default:
@@ -48,21 +51,18 @@ int main(int argc, char ** argv) {
 
     ungetc('m', file);
 
-    int number, from, to;
-    while(fscanf(file, "move %d from %d to %d\n", &number, &from, &to) == 3){
-        move(stacks, number, from, to);
+    for (int i = 0; i < 9; ++i) {
+        reverse_order(stacks[i], height[i]);
     }
 
-//    for (int i = 0; i < 9; ++i) {
-//        reverse_order(stacks[i], height[i]);
-//        for (int j = 0; j < height[i]; ++j) {
-//            printf("%c", get_charlist(stacks[i], j));
-//        }
-//        printf("\n");
-//    }
+    int number, from, to;
+    while(fscanf(file, "move %d from %d to %d\n", &number, &from, &to) == 3){
+        move_crates(stacks, height, number, from - 1, to - 1);
+    }
 
     for (int i = 0; i < 9; ++i) {
         printf("%c", get_charlist(stacks[i], height[i] - 1));
+        free_charlist(stacks[i]);
     }
     printf("\n");
     return 0;

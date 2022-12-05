@@ -16,3 +16,9 @@ char next_character(FILE* file){
         return read;
     }
 }
+
+char skip_next_n_characters(FILE* file, int n){
+    for (int i = 0; i < n; ++i) {
+        next_character(file);
+    }
+}
