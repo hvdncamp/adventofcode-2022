@@ -17,3 +17,5 @@ add_executable(day05_1 day05/part1.c lib/general_functions.h lib/general_functio
 add_executable(day05_2 day05/part2.c lib/general_functions.h lib/general_functions.c lib/arraylist.h lib/arraylist.c)
 add_executable(day06_1 day06/part1.c lib/general_functions.h lib/general_functions.c)
 add_executable(day06_2 day06/part2.c lib/general_functions.h lib/general_functions.c)
+add_executable(day07_1 day07/part1.c lib/general_functions.h lib/general_functions.c lib/arraylist.h lib/arraylist.c)
+add_executable(day07_2 day07/part2.c lib/general_functions.h lib/general_functions.c lib/arraylist.h lib/arraylist.c)
