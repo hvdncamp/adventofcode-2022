@@ -15,6 +15,8 @@ typedef struct charlist {
 ArrayList * list();
 void * get_list(ArrayList *this, int index);
 void add_list(ArrayList *this, void *item);
+void clear_list(ArrayList* this);
+
 void * fold_list(ArrayList *this, void *init, void * (*f)(void *acc, int index, void *item));
 void * free_listitem(void *acc, int index, void *item);
 void free_list(ArrayList *this);

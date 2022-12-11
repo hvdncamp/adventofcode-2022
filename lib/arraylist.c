@@ -26,6 +26,10 @@ void add_list(ArrayList *this, void *item) {
 	this->items[this->size++] = item;
 }
 
+void clear_list(ArrayList* this){
+    this->size = 0;
+}
+
 void * fold_list(ArrayList *this, void *init, void * (*f)(void *acc, int index, void *item)) {
 	int i;
 	for(i = 0; i < this->size; i++) {
@@ -45,7 +49,7 @@ void free_list(ArrayList *this) {
 }
 
 CharList * charlist() {
-    ArrayList *this = malloc(sizeof(ArrayList));
+    CharList *this = malloc(sizeof(CharList));
     this->capacity = 4;
     this->size = 0;
     this->items = malloc(this->capacity * sizeof(char));
