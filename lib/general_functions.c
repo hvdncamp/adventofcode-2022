@@ -39,3 +39,7 @@ int compare_coordinate(void* coo1, void* coo2){
     int xdiff = ((Coordinate*)coo1)->x - ((Coordinate*)coo2)->x;
     return (xdiff != 0 ? xdiff : ((Coordinate*)coo1)->y - ((Coordinate*)coo2)->y);
 }
+
+Coordinate add_coordinate(Coordinate first, Coordinate second){
+    return (Coordinate){first.x + second.x, first.y + second.y};
+}

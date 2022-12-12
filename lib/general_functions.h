@@ -17,5 +17,6 @@ char skip_next_n_characters(FILE* file, int n);
 Coordinate* new_coordinate(int x, int y);
 void free_coordinate(Coordinate* coordinate);
 int compare_coordinate(void* coo1, void* coo2);
+Coordinate add_coordinate(Coordinate first, Coordinate second);
 
 #endif //ADVENTOFCODE_2022_GENERAL_FUNCTIONS_H
