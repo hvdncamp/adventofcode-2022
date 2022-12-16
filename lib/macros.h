@@ -10,6 +10,8 @@
 #endif
 
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
+#define MIN(x, y) ((x) > (y) ? (y) : (x))
+
 #define ABS(x) ((x) < 0 ? (-(x)) : (x))
 
 #endif
