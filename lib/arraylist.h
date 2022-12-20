@@ -20,6 +20,8 @@ void clear_list(ArrayList* this);
 void * fold_list(ArrayList *this, void *init, void * (*f)(void *acc, int index, void *item));
 void * free_listitem(void *acc, int index, void *item);
 void free_list(ArrayList *this);
+void* pop_list(ArrayList* list);
+void* peek_list(ArrayList* list);
 
 CharList * charlist();
 char get_charlist(CharList *this, int index);

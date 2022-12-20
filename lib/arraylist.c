@@ -48,6 +48,25 @@ void free_list(ArrayList *this) {
 	free(this);
 }
 
+void* pop_list(ArrayList* list){
+    if(list->size == 0){
+        fprintf(stderr, "Cannot pop from an empty list\n");
+        exit(1);
+    }
+    void* element = list->items[list->size - 1];
+    list->size--;
+    return element;
+}
+
+void* peek_list(ArrayList* list){
+    if(list->size == 0){
+        fprintf(stderr, "Cannot peek from an empty list\n");
+        exit(1);
+    }
+    void* element = list->items[list->size - 1];
+    return element;
+}
+
 CharList * charlist() {
     CharList *this = malloc(sizeof(CharList));
     this->capacity = 4;

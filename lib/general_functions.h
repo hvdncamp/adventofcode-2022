@@ -8,7 +8,7 @@
 
 typedef struct coordinate{
     int x;
-    long y;
+    int y;
 } Coordinate;
 
 //reads the next character. If this is executed on windows '\r' will be ignored
